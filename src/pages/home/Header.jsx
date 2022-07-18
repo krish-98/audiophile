@@ -1,15 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import ProductCategory from "../../components/ProductCategory"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineShoppingCart } from "react-icons/ai"
-import { Link } from "react-router-dom"
 
 const Header = () => {
+  const [toggle, setToggle] = useState(false)
+
   return (
     <header>
       <nav className="tab:hidden bg-pitch-black pt-7 px-5">
         <div className="flex justify-between items-center border-b border-b-gray-400 pb-8">
           <div className="cursor-pointer">
-            <GiHamburgerMenu className="text-white w-6 h-8" />
+            <GiHamburgerMenu
+              className="text-white w-6 h-8"
+              onClick={() => setToggle(!toggle)}
+            />
           </div>
 
           <p className="text-white text-[1.7rem] font-extrabold cursor-pointer xs:mr-auto xs:pl-8">
@@ -21,6 +27,8 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
+      {toggle && <ProductCategory />}
 
       <nav className="hidden tab:block bg-pitch-black pt-6 px-5 text-white">
         <div className="w-full max-w-[1158px] mx-auto">
