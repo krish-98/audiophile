@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         "orange-accent": "#d87d4a",
         "pitch-black": "#191919",
+        "gray-accent": "#f1f1f1",
       },
     },
   },

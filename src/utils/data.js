@@ -3,7 +3,7 @@ export const data = [
     id: 1,
     category: "HEADPHONES",
     link: "/headphones",
-    image: "../assets/images/image-earphones.png",
+    image: "../assets/images/image-headphones.png",
   },
   {
     id: 2,
