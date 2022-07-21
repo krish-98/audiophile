@@ -5,7 +5,7 @@ import { MdKeyboardArrowRight } from "react-icons/md"
 
 const ProductCategory = () => {
   return (
-    <div className="tab:hidden flex flex-col items-center justify-center gap-16 w-full rounded-b-xl pt-16 pb-10 absolute top-28 left-0 right-0 cursor-pointer bg-white xs:flex-row xs:gap-4 xs:px-6">
+    <div className="tab:hidden flex flex-col items-center justify-center gap-16 w-full rounded-b-xl pt-16 pb-10 absolute top-24 left-0 right-0 cursor-pointer bg-white xs:flex-row xs:gap-4 xs:px-6">
       {data &&
         data.map((item) => (
           <div key={item.id} className="w-[90%] bg-gray-accent rounded-lg ">

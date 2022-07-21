@@ -10,8 +10,8 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="tab:hidden bg-pitch-black pt-7 px-5">
-        <div className="flex justify-between items-center border-b border-b-gray-400 pb-8">
+      <nav className="tab:hidden bg-pitch-black pt-7 px-5 relative">
+        <div className="flex justify-between items-center border-b border-b-zinc-600 pb-8">
           <div className="cursor-pointer">
             {!toggle ? (
               <GiHamburgerMenu
@@ -41,7 +41,7 @@ const Header = () => {
 
       <nav className="hidden tab:block bg-pitch-black pt-6 px-5 text-white">
         <div className="w-full max-w-[1158px] mx-auto">
-          <div className="flex justify-between items-center border-b border-b-gray-400 pb-8">
+          <div className="flex justify-between items-center border-b border-b-zinc-600 pb-8">
             <Link to="/">
               <p className="text-[1.7rem] font-extrabold cursor-pointer">
                 audiophile
