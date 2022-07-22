@@ -36,7 +36,11 @@ const Header = () => {
             <AiOutlineShoppingCart className="text-white w-6 h-8" />
           </div>
         </div>
-        {toggle && <ProductCategory />}
+        {toggle && (
+          <div className="tab:hidden absolute top-20 left-0 right-0 z-20 bg-gray-700 bg-opacity-50 h-screen">
+            <ProductCategory />
+          </div>
+        )}
       </nav>
 
       <nav className="hidden tab:block bg-pitch-black pt-6 px-5 text-white">
