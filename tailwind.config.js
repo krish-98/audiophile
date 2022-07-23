@@ -17,11 +17,6 @@ module.exports = {
         "pitch-black": "#191919",
         "gray-accent": "#f1f1f1",
       },
-      backgroundImage: {
-        "hero-mobile": "url('./assets/hero/mobile-image-hero.jpg')",
-        "hero-tablet": "url('./assets/hero/tablet-image-hero.jpg')",
-        "hero-desktop": "url('./assets/hero/desktop-image-hero.jpg')",
-      },
     },
   },
   plugins: [],

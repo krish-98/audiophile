@@ -1,12 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import ProductCategory from "../../components/ProductCategory"
-import Home_Speaker_1 from "../../assets/home/image-speaker-zx9.png"
-import Home_Speaker_Mobile from "../../assets/home/image-speaker-zx7.jpg"
-import Home_Speaker_Tab from "../../assets/home/image-speaker-zx7-tab.jpg"
-import Home_Speaker_Desktop from "../../assets/home/image-speaker-zx7-desktop.jpg"
-import Home_Earphone from "../../assets/home/image-earphones-yx1.jpg"
-import Home_Best_Gear from "../../assets/home/image-best-gear.jpg"
 
 const Home = () => {
   return (
@@ -40,14 +34,20 @@ const Home = () => {
 
         <div className="m-4">
           <div className="bg-orange-accent rounded-lg">
-            <div className="flex flex-col items-center justify-center py-16 gap-16 tab:flex-row tab:justify-evenly ">
+            <div className="flex flex-col items-center justify-center py-16 gap-16 tab:flex-row tab:gap-0 tab:pb-0 tab:pt-28">
               <picture>
-                <source media="(min-width:992px)" srcSet={Home_Speaker_1} />
-                <source media="(min-width:480px)" srcSet={Home_Speaker_1} />
+                <source
+                  media="(min-width:992px)"
+                  srcSet="/assets/images/home/desktop/image-speaker-zx9.png"
+                />
+                <source
+                  media="(min-width:480px)"
+                  srcSet="/assets/images/home/tablet/image-speaker-zx9.png"
+                />
                 <img
-                  className="w-40 object-contain tab:w-full tab:mt-16"
-                  src={Home_Speaker_1}
-                  alt="Flowers"
+                  className="w-40 object-contain tab:w-[60%] tab:ml-20 "
+                  src="/assets/images/home/mobile/image-speaker-zx9.png"
+                  alt="ZX9 SPEAKER"
                 />
               </picture>
 
@@ -73,13 +73,16 @@ const Home = () => {
               <picture>
                 <source
                   media="(min-width:992px)"
-                  srcSet={Home_Speaker_Desktop}
+                  srcSet="/assets/images/home/desktop/image-speaker-zx7.jpg"
                 />
-                <source media="(min-width:480px)" srcSet={Home_Speaker_Tab} />
+                <source
+                  media="(min-width:480px)"
+                  srcSet="/assets/images/home/tablet/image-speaker-zx7.jpg"
+                />
                 <img
                   className="rounded-lg xs:w-full"
-                  src={Home_Speaker_Mobile}
-                  alt="Flowers"
+                  src="/assets/images/home/mobile/image-speaker-zx7.jpg"
+                  alt="ZX7 SPEAKER"
                 />
               </picture>
 
@@ -94,23 +97,26 @@ const Home = () => {
             </div>
           </div>
 
-          {/* <div>
-            <div>
+          <div className="mt-8">
+            <div className="grid grid-cols-1 gap-6 xs:grid-cols-2">
               <picture>
                 <source
                   media="(min-width:992px)"
-                  srcSet={Home_Speaker_Desktop}
+                  srcSet="/assets/images/home/desktop/image-earphones-yx1.jpg"
                 />
-                <source media="(min-width:480px)" srcSet={Home_Speaker_Tab} />
+                <source
+                  media="(min-width:480px)"
+                  srcSet="/assets/images/home/tablet/image-earphones-yx1.jpg"
+                />
                 <img
-                  className="rounded-lg xs:w-full"
-                  src={Home_Speaker_Mobile}
-                  alt="Flowers"
+                  className="rounded-lg "
+                  src="/assets/images/home/mobile/image-earphones-yx1.jpg"
+                  alt="YX1 EARPHONES"
                 />
               </picture>
 
-              <div>
-                <h2 className="text-3xl font-bold ">YX1 EARPHONES</h2>
+              <div className="bg-gray-accent py-12 px-8 rounded-lg xs:py-4 xs:px-3 tab:py-20 tab:px-10">
+                <h2 className="text-3xl font-bold">YX1 EARPHONES</h2>
                 <Link to="/">
                   <button className="border border-pitch-black bg-gray-accent font-semibold py-3 px-8 mt-6 hover:text-white hover:bg-pitch-black duration-300">
                     SEE PRODUCT
@@ -118,7 +124,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
     </main>

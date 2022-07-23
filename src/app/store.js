@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import itemSliceReducer from "../features/itemSlice/itemSlice"
+import dataSliceReducer from "../features/dataSlice/dataSlice"
 
 const store = configureStore({
-  reducer: { item: itemSliceReducer },
+  reducer: { data: dataSliceReducer },
 })
 
 export default store
