@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="tab:hidden bg-pitch-black pt-7 px-5 relative">
+      <nav className="tab:hidden bg-pitch-black pt-7 px-5 relative ">
         <div className="flex justify-between items-center border-b border-b-zinc-600 pb-8">
           <div className="cursor-pointer">
             {!toggle ? (
