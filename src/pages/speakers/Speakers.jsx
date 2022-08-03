@@ -77,7 +77,7 @@ const Speakers = () => {
               the top of the line powered speakers for home or studio use.
             </p>
             <Link
-              to="speakers/zx7-speaker"
+              to="zx7-speaker"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT

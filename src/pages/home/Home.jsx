@@ -60,7 +60,7 @@ const Home = () => {
                   Upgrade to premium speakers that are phenomenally built to
                   deliver truly remarkable sound.
                 </p>
-                <Link to="/" className="pt-10">
+                <Link to="/speakers/zx9-speaker" className="pt-10">
                   <button className="bg-pitch-black text-white py-3 px-8 hover:bg-gray-600 duration-300">
                     SEE PRODUCT
                   </button>
@@ -89,7 +89,7 @@ const Home = () => {
 
               <div className="absolute top-1/3 left-6 xs:left-16 ">
                 <h2 className=" text-3xl font-bold ">ZX7 SPEAKER</h2>
-                <Link to="/">
+                <Link to="/speakers/zx7-speaker">
                   <button className="border border-pitch-black bg-gray-accent font-semibold py-3 px-8 mt-6 hover:text-white hover:bg-pitch-black duration-300">
                     SEE PRODUCT
                   </button>
@@ -118,7 +118,7 @@ const Home = () => {
 
               <div className="bg-gray-accent py-12 px-8 rounded-lg xs:py-6 xs:px-6 tab:py-20 tab:px-10">
                 <h2 className="text-3xl font-bold">YX1 EARPHONES</h2>
-                <Link to="/">
+                <Link to="/earphones/yx1-earphones">
                   <button className="border border-pitch-black bg-gray-accent font-semibold py-3 px-8 mt-6 hover:text-white hover:bg-pitch-black duration-300">
                     SEE PRODUCT
                   </button>
