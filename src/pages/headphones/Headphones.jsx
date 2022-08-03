@@ -1,12 +1,9 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ProductCategory from "../../components/ProductCategory"
 import BestGear from "../../components/BestGear"
 
 const Headphones = () => {
-  const location = useLocation()
-  console.log(location.pathname)
-
   return (
     <div>
       <div className="bg-pitch-black">
@@ -45,7 +42,7 @@ const Headphones = () => {
               balanced depth and precision of studio-quality sound.
             </p>
             <Link
-              to={`${location.pathname}/xx99-mark-two-headphones`}
+              to="xx99-mark-two-headphones"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT
@@ -80,7 +77,7 @@ const Headphones = () => {
               the go.
             </p>
             <Link
-              to={`${location.pathname}/xx99-mark-one-headphones`}
+              to="xx99-mark-one-headphones"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT
@@ -114,7 +111,7 @@ const Headphones = () => {
               wireless headset is a brilliant companion at home or on the move.
             </p>
             <Link
-              to={`${location.pathname}/xx59-headphones`}
+              to="xx59-headphones"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT

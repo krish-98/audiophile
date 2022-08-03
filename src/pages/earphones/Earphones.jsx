@@ -1,12 +1,9 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ProductCategory from "../../components/ProductCategory"
 import BestGear from "../../components/BestGear"
 
 const Earphones = () => {
-  const location = useLocation()
-  console.log(location.pathname)
-
   return (
     <div>
       <div className="bg-pitch-black">
@@ -46,7 +43,7 @@ const Earphones = () => {
               cancellation feature.
             </p>
             <Link
-              to={`${location.pathname}/yx1-earphones`}
+              to="yx1-earphones"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT

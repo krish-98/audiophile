@@ -11,7 +11,7 @@ const Footer = () => {
               audiophile
             </Link>
             <ul className="text-gray-100 font-medium text-center xs:text-left xs:flex xs:gap-4 tab:gap-12">
-              <Link to="/" className>
+              <Link to="/">
                 <li className="my-2 hover:text-orange-accent">HOME</li>
               </Link>
               <Link to="/headphones">

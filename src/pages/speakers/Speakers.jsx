@@ -1,12 +1,9 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ProductCategory from "../../components/ProductCategory"
 import BestGear from "../../components/BestGear"
 
 const Speakers = () => {
-  const location = useLocation()
-  console.log(location.pathname)
-
   return (
     <div>
       <div className="bg-pitch-black">
@@ -46,7 +43,7 @@ const Speakers = () => {
               practical audio setups.
             </p>
             <Link
-              to={`${location.pathname}/zx9-speaker`}
+              to="zx9-speaker"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT
@@ -80,7 +77,7 @@ const Speakers = () => {
               the top of the line powered speakers for home or studio use.
             </p>
             <Link
-              to={`${location.pathname}/speakers/zx7-speaker`}
+              to="speakers/zx7-speaker"
               className="bg-orange-accent text-white py-3 px-8 hover:bg-orange-300"
             >
               SEE PRODUCT
