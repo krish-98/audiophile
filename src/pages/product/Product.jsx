@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import {
@@ -8,7 +8,7 @@ import {
 
 import ProductCategory from "../../components/ProductCategory"
 import BestGear from "../../components/BestGear"
-import { addToCart } from "../../features/cartSlice/cartSlice"
+import { addToCart, decreaseQuanity } from "../../features/cartSlice/cartSlice"
 
 const Product = () => {
   const { slug } = useParams()
@@ -17,6 +17,8 @@ const Product = () => {
   const { singleProduct: product, allProducts: products } = useSelector(
     (state) => state.products
   )
+
+  const { cartItems } = useSelector((state) => state.cart)
 
   // useEffect(() => {
   //   dispatch(fetchProducts())
@@ -46,6 +48,14 @@ const Product = () => {
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item))
+  }
+
+  const handleIncreaseQuantity = (item) => {
+    dispatch(addToCart(item))
+  }
+
+  const handleDecreaseQuantity = (item) => {
+    dispatch(decreaseQuanity(item))
   }
 
   return (
@@ -94,11 +104,17 @@ const Product = () => {
 
                   <div className="text-sm flex items-center">
                     <div>
-                      <span className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300">
+                      <span
+                        onClick={() => handleDecreaseQuantity(product)}
+                        className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300"
+                      >
                         -
                       </span>
                       <span className="bg-gray-accent py-4 px-2">1</span>
-                      <span className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300">
+                      <span
+                        onClick={() => handleIncreaseQuantity(product)}
+                        className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300"
+                      >
                         +
                       </span>
                     </div>
