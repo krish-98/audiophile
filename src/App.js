@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 import Header from "./pages/home/Header"
 import Home from "./pages/home/Home"
@@ -9,16 +8,7 @@ import Footer from "./pages/home/Footer"
 
 import Product from "./pages/product/Product"
 
-import { useDispatch } from "react-redux"
-import { fetchProducts } from "./features/productSlice/productSlice"
-
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, [dispatch])
-
   return (
     <>
       <Header />

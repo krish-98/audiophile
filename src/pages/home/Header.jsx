@@ -4,9 +4,14 @@ import ProductCategory from "../../components/ProductCategory"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { ImCross } from "react-icons/im"
+import CartModal from "../../components/CartModal"
+import { useSelector, useDispatch } from "react-redux"
+import { cartClicked } from "../../features/cartSlice/cartSlice"
 
 const Header = () => {
   const [toggle, setToggle] = useState(false)
+  const { cartModal } = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
 
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -14,8 +19,13 @@ const Header = () => {
     }
   }
 
+  const handleCartClick = () => {
+    dispatch(cartClicked())
+  }
+
   return (
     <header>
+      {/* Mobile Navbar */}
       <nav className="tab:hidden bg-pitch-black pt-7 px-5 relative ">
         <div className="flex justify-between items-center border-b border-b-zinc-600 pb-8">
           <div className="cursor-pointer">
@@ -39,7 +49,11 @@ const Header = () => {
           </Link>
 
           <div className="cursor-pointer">
-            <AiOutlineShoppingCart className="text-white w-6 h-8" />
+            <AiOutlineShoppingCart
+              onClick={() => handleCartClick()}
+              className="text-white w-6 h-8 "
+            />
+            {cartModal && <CartModal />}
           </div>
         </div>
         {toggle && (
@@ -49,6 +63,7 @@ const Header = () => {
         )}
       </nav>
 
+      {/* Desktop Navbar */}
       <nav className="hidden tab:block bg-pitch-black pt-6 px-5 text-white">
         <div className="w-full max-w-[1158px] mx-auto">
           <div className="flex justify-between items-center border-b border-b-zinc-600 pb-8">
@@ -82,7 +97,11 @@ const Header = () => {
             </ul>
 
             <div className="cursor-pointer">
-              <AiOutlineShoppingCart className="text-white w-6 h-8" />
+              <AiOutlineShoppingCart
+                onClick={() => handleCartClick()}
+                className="text-white w-6 h-8 "
+              />
+              {cartModal && <CartModal />}
             </div>
           </div>
         </div>

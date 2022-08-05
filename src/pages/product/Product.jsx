@@ -8,17 +8,45 @@ import {
 
 import ProductCategory from "../../components/ProductCategory"
 import BestGear from "../../components/BestGear"
+import { addToCart } from "../../features/cartSlice/cartSlice"
 
 const Product = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { singleProduct: product } = useSelector((state) => state.products)
+  const { singleProduct: product, allProducts: products } = useSelector(
+    (state) => state.products
+  )
+
+  // useEffect(() => {
+  //   dispatch(fetchProducts())
+  //   dispatch(fetchSingleProduct(slug))
+  // }, [dispatch, slug])
+
+  // const { singleProduct: product, allProducts: products } = useSelector((state) => state.products);
+  // useEffect(() => {
+  //   dispatch(fetchProducts());
+  // }, []);
+  // useEffect(() => {
+  //   dispatch(fetchSingleProduct(slug));
+  // }, [products, slug]);
+
+  // useEffect(() => {
+  //   dispatch(fetchProducts())
+  // }, [])
+
+  // useEffect(() => {
+  //   dispatch(fetchSingleProduct(slug))
+  // }, [products, slug])
 
   useEffect(() => {
     dispatch(fetchProducts())
     dispatch(fetchSingleProduct(slug))
-  }, [dispatch, slug])
+  }, [products.length, slug])
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item))
+  }
 
   return (
     <>
@@ -75,7 +103,10 @@ const Product = () => {
                       </span>
                     </div>
 
-                    <button className="ml-4 uppercase bg-orange-accent text-white font-semibold px-6 py-4 hover:opacity-80 duration-300">
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="ml-4 uppercase bg-orange-accent text-white font-semibold px-6 py-4 hover:opacity-80 duration-300"
+                    >
                       Add to cart
                     </button>
                   </div>

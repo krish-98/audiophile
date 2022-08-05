@@ -5,7 +5,6 @@ import { Provider } from "react-redux"
 import store from "./app/store"
 import "./index.css"
 import App from "./App"
-import { fetchProducts } from "./features/productSlice/productSlice"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
