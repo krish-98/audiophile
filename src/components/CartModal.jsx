@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import {
   addToCart,
+  cartTotal,
   decreaseQuanity,
   removeCartItems,
 } from "../features/cartSlice/cartSlice"
@@ -24,13 +25,21 @@ const CartModal = () => {
     dispatch(removeCartItems(item))
   }
 
+  useEffect(() => {
+    dispatch(cartTotal())
+  }, [handleDecreaseQuanity, handleAddToCart])
+
+  const { cartTotalAmount, cartTotalQuantity } = useSelector(
+    (state) => state.cart
+  )
+
   return (
     <div className="absolute top-20 right-0 z-40 px-6 xl:right-56 xl:top-20">
       {cartItems && cartItems.length > 0 ? (
         <div className="bg-white py-2 px-6 rounded-xl">
           <div className="my-6 flex justify-between">
             <span className="text-lg font-semibold text-orange-accent">
-              CART (1)
+              CART ({cartTotalQuantity})
             </span>
             <button
               onClick={() => handleRemoveCartItems(cartItems)}
@@ -84,7 +93,7 @@ const CartModal = () => {
             <p className="text-pitch-black text-opacity-60 font-medium text-lg">
               TOTAL
             </p>
-            <p className="font-semibold text-lg">$ 28,492</p>
+            <p className="font-semibold text-lg">$ {cartTotalAmount}</p>
           </div>
 
           <Link

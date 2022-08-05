@@ -10,7 +10,7 @@ import { cartClicked } from "../../features/cartSlice/cartSlice"
 
 const Header = () => {
   const [toggle, setToggle] = useState(false)
-  const { cartModal } = useSelector((state) => state.cart)
+  const { cartModal, cartTotalQuantity } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
 
   const navLinkStyles = ({ isActive }) => {
@@ -48,11 +48,14 @@ const Header = () => {
             </p>
           </Link>
 
-          <div className="cursor-pointer">
-            <AiOutlineShoppingCart
-              onClick={() => handleCartClick()}
-              className="text-white w-6 h-8 "
-            />
+          <div
+            onClick={() => handleCartClick()}
+            className="cursor-pointer relative"
+          >
+            <AiOutlineShoppingCart className="text-white w-6 h-8" />
+            <span className="absolute left-3 bottom-4 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+              {cartTotalQuantity}
+            </span>
             {cartModal && <CartModal />}
           </div>
         </div>
@@ -96,11 +99,14 @@ const Header = () => {
               </li>
             </ul>
 
-            <div className="cursor-pointer">
-              <AiOutlineShoppingCart
-                onClick={() => handleCartClick()}
-                className="text-white w-6 h-8 "
-              />
+            <div
+              onClick={() => handleCartClick()}
+              className="cursor-pointer relative"
+            >
+              <AiOutlineShoppingCart className="text-white w-6 h-8" />
+              <span className="absolute left-3 bottom-4 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+                {cartTotalQuantity}
+              </span>
               {cartModal && <CartModal />}
             </div>
           </div>
