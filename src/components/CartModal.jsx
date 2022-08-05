@@ -1,7 +1,11 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { addToCart } from "../features/cartSlice/cartSlice"
+import {
+  addToCart,
+  decreaseQuanity,
+  removeCartItems,
+} from "../features/cartSlice/cartSlice"
 
 import EmptyCart from "../components/EmptyCart.svg"
 
@@ -13,6 +17,13 @@ const CartModal = () => {
     dispatch(addToCart(item))
   }
 
+  const handleDecreaseQuanity = (item) => {
+    dispatch(decreaseQuanity(item))
+  }
+  const handleRemoveCartItems = (item) => {
+    dispatch(removeCartItems(item))
+  }
+
   return (
     <div className="absolute top-20 right-0 z-40 px-6 xl:right-56 xl:top-20">
       {cartItems && cartItems.length > 0 ? (
@@ -21,7 +32,10 @@ const CartModal = () => {
             <span className="text-lg font-semibold text-orange-accent">
               CART (1)
             </span>
-            <button className="text-pitch-black text-opacity-70 underline hover:text-orange-accent duration-300">
+            <button
+              onClick={() => handleRemoveCartItems(cartItems)}
+              className="text-pitch-black text-opacity-70 underline hover:text-orange-accent duration-300"
+            >
               Remove All
             </button>
           </div>
@@ -47,7 +61,10 @@ const CartModal = () => {
                 </div>
 
                 <div className="flex items-center">
-                  <span className="py-2 px-4 bg-gray-accent cursor-pointer hover:bg-gray-200 hover:text-orange-accent duration-300 tab:bg-black">
+                  <span
+                    onClick={() => handleDecreaseQuanity(item)}
+                    className="py-2 px-4 bg-gray-accent cursor-pointer hover:bg-gray-200 hover:text-orange-accent duration-300 tab:bg-black"
+                  >
                     -
                   </span>
                   <span className="py-2 px-2 bg-gray-accent text-semibold tab:bg-black">
