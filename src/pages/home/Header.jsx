@@ -48,12 +48,12 @@ const Header = () => {
             </p>
           </Link>
 
-          <div
-            onClick={() => handleCartClick()}
-            className="cursor-pointer relative"
-          >
-            <AiOutlineShoppingCart className="text-white w-6 h-8" />
-            <span className="absolute left-3 bottom-4 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+          <div className="cursor-pointer relative">
+            <AiOutlineShoppingCart
+              onClick={() => handleCartClick()}
+              className="text-white w-6 h-8"
+            />
+            <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
               {cartTotalQuantity}
             </span>
             {cartModal && <CartModal />}
@@ -99,12 +99,12 @@ const Header = () => {
               </li>
             </ul>
 
-            <div
-              onClick={() => handleCartClick()}
-              className="cursor-pointer relative"
-            >
-              <AiOutlineShoppingCart className="text-white w-6 h-8" />
-              <span className="absolute left-3 bottom-4 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+            <div className="cursor-pointer relative">
+              <AiOutlineShoppingCart
+                onClick={() => handleCartClick()}
+                className="text-white w-6 h-8"
+              />
+              <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
                 {cartTotalQuantity}
               </span>
               {cartModal && <CartModal />}

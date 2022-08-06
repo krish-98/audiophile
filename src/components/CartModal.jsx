@@ -34,9 +34,9 @@ const CartModal = () => {
   )
 
   return (
-    <div className="absolute top-20 right-0 z-40 px-6 xl:right-56 xl:top-20">
+    <div className="absolute top-20 right-0 z-40 px-6">
       {cartItems && cartItems.length > 0 ? (
-        <div className="bg-white py-2 px-6 rounded-xl">
+        <div className="bg-white py-2 px-10 rounded-xl">
           <div className="my-6 flex justify-between">
             <span className="text-lg font-semibold text-orange-accent">
               CART ({cartTotalQuantity})
@@ -54,7 +54,7 @@ const CartModal = () => {
             cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between gap-4 my-4"
+                className="flex items-center justify-between gap-4 my-4 mr-14"
               >
                 <img
                   className="w-20 h-20 object-contain rounded-lg"
@@ -105,7 +105,7 @@ const CartModal = () => {
         </div>
       ) : (
         <div className="bg-white p-14 rounded-lg border border-orange-accent">
-          <h2 className="text-xl text-center mb-2 font-semibold text-orange-accent">
+          <h2 className="text-xl text-center mb-2 font-semibold text-orange-accent h-36 w-44">
             Cart Empty
           </h2>
           <img className="h-36" src={EmptyCart} alt="An Empty Cart" />

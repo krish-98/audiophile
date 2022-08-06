@@ -6,7 +6,7 @@ import ProductCategory from "../../components/ProductCategory"
 const Home = () => {
   return (
     <main>
-      <section className="bg-hero-mobile bg-contain bg-no-repeat bg-top bg-pitch-black">
+      <section className="bg-pitch-black">
         <div className="w-[85%] mx-auto max-w-[1150px] py-28 text-center tab:text-left">
           <div className="flex flex-col items-center justify-center gap-10 tab:items-start tab:w-[50%]">
             <strong className="text-gray-400 tracking-[.5rem]">
@@ -69,7 +69,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="mt-8 relative">
+          <div className="mt-8 ">
             <div>
               <picture>
                 <source
@@ -86,14 +86,15 @@ const Home = () => {
                   alt="ZX7 SPEAKER"
                 />
               </picture>
-
-              <div className="absolute top-1/3 left-6 xs:left-16 ">
-                <h2 className=" text-3xl font-bold ">ZX7 SPEAKER</h2>
-                <Link to="/speakers/zx7-speaker">
-                  <button className="border border-pitch-black bg-gray-accent font-semibold py-3 px-8 mt-6 hover:text-white hover:bg-pitch-black duration-300">
-                    SEE PRODUCT
-                  </button>
-                </Link>
+              <div className="relative">
+                <div className="absolute bottom-20 left-6 xs:left-16 ">
+                  <h2 className=" text-3xl font-bold ">ZX7 SPEAKER</h2>
+                  <Link to="/speakers/zx7-speaker">
+                    <button className="border border-pitch-black bg-gray-accent font-semibold py-3 px-8 mt-6 hover:text-white hover:bg-pitch-black duration-300">
+                      SEE PRODUCT
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
