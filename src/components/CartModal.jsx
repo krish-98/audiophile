@@ -93,7 +93,9 @@ const CartModal = () => {
             <p className="text-pitch-black text-opacity-60 font-medium text-lg">
               TOTAL
             </p>
-            <p className="font-semibold text-lg">$ {cartTotalAmount}</p>
+            <p className="font-semibold text-lg text-black">
+              $ {cartTotalAmount}
+            </p>
           </div>
 
           <Link
