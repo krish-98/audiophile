@@ -2,28 +2,39 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-const initialFormData = {
-  name: "",
-  email: "",
-  phone: "",
-  address: "",
-  zipcode: "",
-  city: "",
-  country: "",
-}
-
 const Checkout = () => {
-  const [formData, setFormData] = useState(initialFormData)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    zipcode: "",
+    city: "",
+    country: "",
+  })
+
+  const [formErrors, setFormErrors] = useState({})
+
   const navigate = useNavigate()
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart)
 
-  // if(formData.name === "")
-
   const handleFormChange = (e) => {
-    setFormData(e.target.value)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleFormSubmit = () => {}
+  const handleBlur = (e) => {
+    if (e.target.value.length === 0) {
+      setFormErrors({ ...formErrors, [e.target.name]: "Field cannot be empty" })
+    } else if (e.target.value.length > 0) {
+      setFormErrors({ ...formErrors, [e.target.name]: "" })
+    } else if (!e.target.email.includes("@")) {
+      setFormErrors({ ...formErrors, [e.target.email]: "wrong format" })
+    }
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+  }
 
   return (
     <div className="bg-gray-accent">
@@ -34,6 +45,8 @@ const Checkout = () => {
         >
           Go Back
         </h2>
+
+        <h2 className="overflow-auto">{JSON.stringify(formData)}</h2>
 
         <form onSubmit={handleFormSubmit} className="my-4 lg:flex lg:gap-6">
           <div className="bg-white py-4 px-6 rounded-md lg:w-[70%]">
@@ -48,54 +61,57 @@ const Checkout = () => {
               </h3>
 
               <label className="flex justify-between" htmlFor="name">
-                <span className="text-xs text-black font-bold">Name</span>
+                <span className="text-xs  font-bold text-black">Name</span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.name}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
 
               <label className="flex justify-between" htmlFor="email">
-                <span className="text-xs text-black font-bold">
+                <span className="text-xs  font-bold text-black">
                   Email Address
                 </span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.email}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
 
               <label className="flex justify-between" htmlFor="phone">
-                <span className="text-xs text-black font-bold">
+                <span className="text-xs  font-bold text-black">
                   Phone Number
                 </span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.phone}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
             </fieldset>
@@ -107,74 +123,78 @@ const Checkout = () => {
               </h3>
 
               <label className="flex justify-between" htmlFor="address">
-                <span className="text-xs text-black font-bold">
+                <span className="text-xs  font-bold text-black">
                   Your Address
                 </span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.address}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 name="address"
                 id="address"
                 value={formData.address}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
 
               <label className="flex justify-between" htmlFor="zipcode">
-                <span className="text-xs text-black font-bold">ZIP Code</span>
+                <span className="text-xs  font-bold text-black">ZIP Code</span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.zipcode}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 name="zipcode"
                 id="zipcode"
                 value={formData.zipcode}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
 
               <label className="flex justify-between" htmlFor="city">
-                <span className="text-xs text-black font-bold">City</span>
+                <span className="text-xs  font-bold text-black">City</span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.city}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 name="city"
                 id="city"
                 value={formData.city}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
 
               <label className="flex justify-between" htmlFor="country">
-                <span className="text-xs text-black font-bold">Country</span>
+                <span className="text-xs  font-bold text-black">Country</span>
                 <span className="text-xs text-orange-accent font-semibold">
-                  Field cannot be empty
+                  {formErrors.country}
                 </span>
               </label>
               <input
-                className="border border-orange-accent py-3 pl-3 rounded-lg"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
                 type="text"
                 name="country"
                 id="country"
                 value={formData.country}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 required
               />
             </fieldset>
 
             {/* Payment Details */}
-            <fieldset className="md:w-[80%] mx-auto">
+            {/* <fieldset className="md:w-[80%] mx-auto">
               <h3 className="text-orange-accent uppercase text-sm font-bold mb-4">
                 Payment Details
               </h3>
@@ -210,7 +230,7 @@ const Checkout = () => {
                   cancelled.
                 </p>
               </div>
-            </fieldset>
+            </fieldset> */}
           </div>
 
           <div className="my-6 bg-white py-4 px-6 rounded-md lg:w-[30%] lg:my-0 lg:self-start">
