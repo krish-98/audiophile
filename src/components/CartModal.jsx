@@ -54,7 +54,7 @@ const CartModal = () => {
             cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between gap-4 my-4 mr-14"
+                className="flex items-center justify-between gap-6 my-4 mr-14"
               >
                 <img
                   className="w-20 h-20 object-contain rounded-lg"
@@ -63,7 +63,9 @@ const CartModal = () => {
                 />
 
                 <div className="flex flex-col">
-                  <span className="font-semibold text-black">{item.name}</span>
+                  <span className="font-semibold text-black">
+                    {item.shortName}
+                  </span>
                   <span className="font-semibold text-pitch-black text-opacity-70">
                     $ {item.price}
                   </span>
@@ -107,8 +109,8 @@ const CartModal = () => {
         </div>
       ) : (
         <div className="bg-white p-14 rounded-lg border border-orange-accent">
-          <h2 className="text-xl text-center mb-2 font-semibold text-orange-accent h-36 w-44">
-            Cart Empty
+          <h2 className="text-xl text-center mb-2 font-semibold text-orange-accent h-36 w-56 uppercase">
+            Your Cart is Empty
           </h2>
           <img className="h-36" src={EmptyCart} alt="An Empty Cart" />
         </div>

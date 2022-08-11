@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { onCheckout } from "../../features/globalSlice/globalSlice"
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +12,12 @@ const Checkout = () => {
     zipcode: "",
     city: "",
     country: "",
+    paymentMethod: "",
   })
-
   const [formErrors, setFormErrors] = useState({})
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart)
 
   const handleFormChange = (e) => {
@@ -27,13 +29,15 @@ const Checkout = () => {
       setFormErrors({ ...formErrors, [e.target.name]: "Field cannot be empty" })
     } else if (e.target.value.length > 0) {
       setFormErrors({ ...formErrors, [e.target.name]: "" })
-    } else if (!e.target.email.includes("@")) {
-      setFormErrors({ ...formErrors, [e.target.email]: "wrong format" })
     }
   }
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
+
+    if (Object.values(formData).length) {
+      dispatch(onCheckout(true))
+    }
   }
 
   return (
@@ -45,8 +49,6 @@ const Checkout = () => {
         >
           Go Back
         </h2>
-
-        <h2 className="overflow-auto">{JSON.stringify(formData)}</h2>
 
         <form onSubmit={handleFormSubmit} className="my-4 lg:flex lg:gap-6">
           <div className="bg-white py-4 px-6 rounded-md lg:w-[70%]">
@@ -67,13 +69,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="Zayn Malik"
                 required
               />
 
@@ -86,13 +89,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="zayn@mail.com"
                 required
               />
 
@@ -105,13 +109,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="+44 9876-5431"
                 required
               />
             </fieldset>
@@ -131,13 +136,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 name="address"
                 id="address"
                 value={formData.address}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="1137 Williams Avenue"
                 required
               />
 
@@ -148,13 +154,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 name="zipcode"
                 id="zipcode"
                 value={formData.zipcode}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="11001"
                 required
               />
 
@@ -165,13 +172,14 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 name="city"
                 id="city"
                 value={formData.city}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="London"
                 required
               />
 
@@ -182,19 +190,20 @@ const Checkout = () => {
                 </span>
               </label>
               <input
-                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent"
+                className="border border-gray py-3 pl-3 rounded-lg focus:outline-orange-accent placeholder:text-sm"
                 type="text"
                 name="country"
                 id="country"
                 value={formData.country}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
+                placeholder="United Kingdom"
                 required
               />
             </fieldset>
 
             {/* Payment Details */}
-            {/* <fieldset className="md:w-[80%] mx-auto">
+            <fieldset className="md:w-[80%] mx-auto">
               <h3 className="text-orange-accent uppercase text-sm font-bold mb-4">
                 Payment Details
               </h3>
@@ -206,31 +215,48 @@ const Checkout = () => {
                   className="border border-gray-300 p-4 cursor-pointer rounded-lg"
                   htmlFor="e-money"
                 >
-                  <input type="radio" name="payment-method" id="e-money" />
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    id="e-money"
+                    value="e-money"
+                    onChange={handleFormChange}
+                    required
+                  />
                   <span className="ml-4 font-semibold">e-Money</span>
                 </label>
+
                 <label
                   className="border border-gray-300 p-4 cursor-pointer rounded-lg"
                   htmlFor="cod"
                 >
-                  <input type="radio" name="payment-method" id="cod" />
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    id="cod"
+                    value="cod"
+                    onChange={handleFormChange}
+                    required
+                  />
                   <span className="ml-4 font-semibold">Cash on Delivery</span>
                 </label>
               </div>
 
-              <div className="flex justify-between mt-8 mb-4 gap-6">
-                <img
-                  src="/assets/images/checkout/icon-cash-on-delivery.svg"
-                  alt="cash on delivery icon"
-                />
-                <p className="text-pitch-black text-opacity-75 ">
-                  The 'Cash on Delivery' option enables you to pay in cash when
-                  our delivery courier arrives at your residence. Just make sure
-                  your address is correct so that your order will not be
-                  cancelled.
-                </p>
-              </div>
-            </fieldset> */}
+              {formData.paymentMethod === "cod" && (
+                <div className="flex justify-between mt-8 mb-4 gap-6">
+                  <img
+                    src="/assets/images/checkout/icon-cash-on-delivery.svg"
+                    alt="cash on delivery icon"
+                  />
+                  <p className="text-pitch-black text-opacity-75 ">
+                    The 'Cash on Delivery' option enables you to pay in cash
+                    when our delivery courier arrives at your residence. Just
+                    make sure your address is correct so that your order will
+                    not be cancelled.
+                  </p>
+                </div>
+              )}
+            </fieldset>
           </div>
 
           <div className="my-6 bg-white py-4 px-6 rounded-md lg:w-[30%] lg:my-0 lg:self-start">
@@ -294,7 +320,10 @@ const Checkout = () => {
 
             <button
               type="submit"
-              className="my-8 w-full text-center text-white font-semibold bg-orange-accent px-6 py-3 hover:bg-orange-300 duration-300 uppercase"
+              disabled={cartTotalAmount === 0 ? true : false}
+              className={`my-8 w-full text-center text-white font-semibold bg-orange-accent px-6 py-3 hover:bg-orange-300 duration-300 uppercase ${
+                cartTotalAmount === 0 ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
               continue & pay
             </button>

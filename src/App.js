@@ -11,10 +11,13 @@ import Checkout from "./pages/checkout/Checkout"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { cartTotal } from "./features/cartSlice/cartSlice"
+import CheckoutModal from "./components/CheckoutModal"
 
 function App() {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
+  const { checkout } = useSelector((state) => state.global)
+
   useEffect(() => {
     dispatch(cartTotal())
   }, [cart])
@@ -32,6 +35,7 @@ function App() {
         <Route path="earphones/:slug" element={<Product />} />
         <Route path="checkout" element={<Checkout />} />
       </Routes>
+      {checkout && <CheckoutModal />}
       <Footer />
     </>
   )
