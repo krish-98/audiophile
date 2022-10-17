@@ -6,7 +6,12 @@ import ProductCategory from "../../components/ProductCategory"
 const Home = () => {
   return (
     <main>
-      <section className="bg-pitch-black">
+      <section
+        // className="bg-slate-500"
+        style={{
+          "background-image": url("/assets/images/home/mobile/image-hero.jpg"),
+        }}
+      >
         <div className="w-[85%] mx-auto max-w-[1150px] py-28 text-center tab:text-left">
           <div className="flex flex-col items-center justify-center gap-10 tab:items-start tab:w-[50%]">
             <strong className="text-gray-400 tracking-[.5rem]">
