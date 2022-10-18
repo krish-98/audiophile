@@ -1,0 +1,15 @@
+#hero {
+  background-image: url("../../../public/assets/images/home/mobile/image-hero.jpg");
+}
+
+@media (min-width: 768px) {
+  #hero {
+    background-image: url("../../../public/assets/images/home/tablet/image-hero.jpg");
+  }
+}
+
+@media (min-width: 992px) {
+  #hero {
+    background-image: url("../../../public/assets/images/home/desktop/image-hero.jpg");
+  }
+}

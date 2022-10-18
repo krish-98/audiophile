@@ -2,15 +2,18 @@ import React from "react"
 import { Link } from "react-router-dom"
 import BestGear from "../../components/BestGear"
 import ProductCategory from "../../components/ProductCategory"
+import "./Home.css"
 
 const Home = () => {
   return (
     <main>
       <section
-        // className="bg-slate-500"
-        style={{
-          "background-image": url("/assets/images/home/mobile/image-hero.jpg"),
-        }}
+        id="hero"
+        // style={{
+        //   "background-image":
+        //     "url('/assets/images/home/desktop/image-hero.jpg')",
+        // }}
+        className="bg-pitch-black bg-contain bg-no-repeat bg-center"
       >
         <div className="w-[85%] mx-auto max-w-[1150px] py-28 text-center tab:text-left">
           <div className="flex flex-col items-center justify-center gap-10 tab:items-start tab:w-[50%]">
