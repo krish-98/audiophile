@@ -1,17 +1,18 @@
+import { useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
+
 import Header from "./pages/home/Header"
 import Home from "./pages/home/Home"
 import Headphones from "./pages/headphones/Headphones"
 import Speakers from "./pages/speakers/Speakers"
 import Earphones from "./pages/earphones/Earphones"
 import Footer from "./pages/home/Footer"
-
 import Product from "./pages/product/Product"
 import Checkout from "./pages/checkout/Checkout"
-import { useEffect } from "react"
+
+import CheckoutModal from "./components/CheckoutModal"
 import { useDispatch, useSelector } from "react-redux"
 import { cartTotal } from "./features/cartSlice/cartSlice"
-import CheckoutModal from "./components/CheckoutModal"
 
 function App() {
   const dispatch = useDispatch()

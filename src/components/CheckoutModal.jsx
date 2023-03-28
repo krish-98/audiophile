@@ -1,7 +1,7 @@
 import React from "react"
-import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+
+import { useDispatch, useSelector } from "react-redux"
 import { onCheckout } from "../features/globalSlice/globalSlice"
 import { removeCartItems } from "../features/cartSlice/cartSlice"
 

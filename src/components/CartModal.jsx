@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 import {
   addToCart,
+  cartClicked,
   cartTotal,
   decreaseQuanity,
   removeCartItems,
@@ -34,7 +35,7 @@ const CartModal = () => {
   )
 
   return (
-    <div className="absolute top-20 right-0 z-40 px-6">
+    <div className="absolute top-20 right-0 z-40">
       {cartItems && cartItems.length > 0 ? (
         <div className="bg-white py-2 px-10 rounded-xl">
           <div className="my-6 flex justify-between">
@@ -103,6 +104,7 @@ const CartModal = () => {
           <Link
             className="my-8 block text-center text-white font-semibold bg-orange-accent px-6 py-3 hover:bg-orange-300 duration-300"
             to="/checkout"
+            onClick={() => dispatch(cartClicked())}
           >
             CHECKOUT
           </Link>

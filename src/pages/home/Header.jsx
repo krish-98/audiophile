@@ -53,12 +53,17 @@ const Header = () => {
               onClick={() => handleCartClick()}
               className="text-white w-6 h-8"
             />
-            <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
-              {cartTotalQuantity}
-            </span>
+
+            {cartTotalQuantity > 0 && (
+              <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+                {cartTotalQuantity}
+              </span>
+            )}
+
             {cartModal && <CartModal />}
           </div>
         </div>
+
         {toggle && (
           <div className="tab:hidden absolute top-20 left-0 right-0 z-20 bg-gray-700 bg-opacity-50 h-screen">
             <ProductCategory />
@@ -104,9 +109,13 @@ const Header = () => {
                 onClick={() => handleCartClick()}
                 className="text-white w-6 h-8"
               />
-              <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
-                {cartTotalQuantity}
-              </span>
+
+              {cartTotalQuantity > 0 && (
+                <span className="absolute left-3 bottom-5 text-white bg-orange-accent py-1 px-2 rounded-full text-sm">
+                  {cartTotalQuantity}
+                </span>
+              )}
+
               {cartModal && <CartModal />}
             </div>
           </div>
