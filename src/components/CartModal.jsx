@@ -7,7 +7,7 @@ import {
   cartTotal,
   decreaseQuanity,
   removeCartItems,
-} from "../features/cartSlice/cartSlice"
+} from "../redux/features/cartSlice"
 
 import EmptyCart from "../components/EmptyCart.svg"
 

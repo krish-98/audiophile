@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
-import ProductCategory from "../../components/ProductCategory"
+import { ProductCategory, CartModal } from "../components"
+
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { ImCross } from "react-icons/im"
-import CartModal from "../../components/CartModal"
+
 import { useSelector, useDispatch } from "react-redux"
-import { cartClicked } from "../../features/cartSlice/cartSlice"
+import { cartClicked } from "../redux/features/cartSlice"
 
 const Header = () => {
   const [toggle, setToggle] = useState(false)

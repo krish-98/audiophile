@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import { useDispatch, useSelector } from "react-redux"
-import { onCheckout } from "../features/globalSlice/globalSlice"
-import { removeCartItems } from "../features/cartSlice/cartSlice"
+import { onCheckout } from "../redux/features/globalSlice"
+import { removeCartItems } from "../redux/features/cartSlice"
 
 const CheckoutModal = () => {
   const dispatch = useDispatch()

@@ -33,7 +33,10 @@ const cartSlice = createSlice({
           }
         )
       } else {
-        const tempProduct = { ...action.payload, cartQuantity: 1 }
+        const tempProduct = {
+          ...action.payload,
+          cartQuantity: 1,
+        }
         state.cartItems.push(tempProduct)
 
         toast.success(`${action.payload.name} added to cart`, {

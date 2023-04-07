@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams, useNavigate, Link } from "react-router-dom"
+import { ProductCategory, BestGear } from "../../components"
 import {
   fetchProducts,
   fetchSingleProduct,
-} from "../../features/productSlice/productSlice"
+} from "../../redux/features/productSlice"
 
-import ProductCategory from "../../components/ProductCategory"
-import BestGear from "../../components/BestGear"
-import { addToCart } from "../../features/cartSlice/cartSlice"
+import { addToCart } from "../../redux/features/cartSlice"
 
 const Product = () => {
+  const [count, setCount] = useState(1)
   const { slug } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -19,27 +19,6 @@ const Product = () => {
   )
 
   const { cartItems } = useSelector((state) => state.cart)
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts())
-  //   dispatch(fetchSingleProduct(slug))
-  // }, [dispatch, slug])
-
-  // const { singleProduct: product, allProducts: products } = useSelector((state) => state.products);
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, []);
-  // useEffect(() => {
-  //   dispatch(fetchSingleProduct(slug));
-  // }, [products, slug]);
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts())
-  // }, [])
-
-  // useEffect(() => {
-  //   dispatch(fetchSingleProduct(slug))
-  // }, [products, slug])
 
   useEffect(() => {
     dispatch(fetchProducts())
@@ -96,11 +75,20 @@ const Product = () => {
 
                   <div className="text-sm flex items-center">
                     <div>
-                      <span className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300">
+                      <span
+                        onClick={() => {
+                          if (count === 1) return
+                          setCount((prev) => prev - 1)
+                        }}
+                        className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300"
+                      >
                         -
                       </span>
-                      <span className="bg-gray-accent py-4 px-2">1</span>
-                      <span className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300">
+                      <span className="bg-gray-accent py-4 px-2">{count}</span>
+                      <span
+                        onClick={() => setCount((prev) => prev + 1)}
+                        className="bg-gray-accent px-6 py-4 cursor-pointer hover:text-orange-accent hover:bg-gray-300 duration-300"
+                      >
                         +
                       </span>
                     </div>

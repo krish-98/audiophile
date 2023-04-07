@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+
 import { useDispatch, useSelector } from "react-redux"
-import { onCheckout } from "../../features/globalSlice/globalSlice"
+import { onCheckout } from "../../redux/features/globalSlice"
 
 const Checkout = () => {
   const [formData, setFormData] = useState({

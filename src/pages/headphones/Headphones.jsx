@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import ProductCategory from "../../components/ProductCategory"
-import BestGear from "../../components/BestGear"
+import { ProductCategory, BestGear } from "../../components"
 
 const Headphones = () => {
   return (
